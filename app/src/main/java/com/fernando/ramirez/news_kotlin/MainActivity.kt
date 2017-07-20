@@ -11,7 +11,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
-    
+
+    var randomImageURL = "http://loremflickr.com/600/400"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,11 +45,11 @@ class MainActivity : AppCompatActivity() {
 
     fun initFakeData() : ArrayList<Post> {
         val posts = ArrayList<Post>()
-        posts.add(Post("First News Headline", "Lorem ipsum dolor sit amet, one nam no scaevola adolescens."))
-        posts.add(Post("Second News Headline", "Lorem ipsum dolor sit amet, two nam no scaevola adolescens."))
-        posts.add(Post("Third News Headline", "Lorem ipsum dolor sit amet, three nam no scaevola adolescens."))
-        posts.add(Post("Fourth News Headline", "Lorem ipsum dolor sit amet, four nam no scaevola adolescens."))
-        posts.add(Post("Fifth News Headline", "Lorem ipsum dolor sit amet, five no scaevola adolescens."))
+        posts.add(Post("First News Headline", "Lorem ipsum dolor sit amet, one nam no scaevola adolescens.", randomImageURL + "?random=1"))
+        posts.add(Post("Second News Headline", "Lorem ipsum dolor sit amet, two nam no scaevola adolescens.", randomImageURL + "?random=2"))
+        posts.add(Post("Third News Headline", "Lorem ipsum dolor sit amet, three nam no scaevola adolescens.", randomImageURL + "?random=3"))
+        posts.add(Post("Fourth News Headline", "Lorem ipsum dolor sit amet, four nam no scaevola adolescens.", randomImageURL + "?random=4"))
+        posts.add(Post("Fifth News Headline", "Lorem ipsum dolor sit amet, five no scaevola adolescens.", randomImageURL + "?random=5"))
         return posts
     }
 }

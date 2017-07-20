@@ -1,9 +1,11 @@
 package com.fernando.ramirez.news_kotlin
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.post_item_layout.view.*
 
 /**
@@ -12,9 +14,12 @@ import kotlinx.android.synthetic.main.post_item_layout.view.*
 
 class PostAdapter(val postList: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
+    var mContext: Context? = null
+
     // Returns the view for each item in the list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostAdapter.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.post_item_layout, parent, false)
+        mContext = parent.context
+        val view = LayoutInflater.from(mContext).inflate(R.layout.post_item_layout, parent, false)
         return ViewHolder(view)
     }
 
@@ -31,6 +36,7 @@ class PostAdapter(val postList: ArrayList<Post>) : RecyclerView.Adapter<PostAdap
     // Holds the list view itself
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(post: Post) {
+            Picasso.with(itemView.context).load(post.imageURL).into(itemView.postImage)
             itemView.titleTextView.text = post.title
             itemView.descriptionTextView.text = post.description
         }
